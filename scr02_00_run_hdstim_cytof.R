@@ -38,7 +38,7 @@ cytof_u_plots <- plot_umap(cytof_mapped_data, path = file.path(figures_folder, "
 cytof_e_plots <- plot_exprs(cytof_mapped_data, path = file.path(figures_folder, "cytof-exprs-plots"), verbose = TRUE)
 
 # Run marker ranking
-ranking <- marker_ranking_boruta(cytof_mapped_data,
+marker_ranking <- marker_ranking_boruta(cytof_mapped_data,
   path = figures_folder,
   n_cells = NULL,
   max_runs = 100,
@@ -46,4 +46,7 @@ ranking <- marker_ranking_boruta(cytof_mapped_data,
   verbose = 1
 )
 saveRDS(ranking, file.path(results_folder, "marker-ranking.rds"))
+
+# Generate marker ranking heatmap
+pht <- plot_marker_ranking_heatmap(marker_ranking)
 

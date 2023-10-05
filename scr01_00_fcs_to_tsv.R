@@ -41,7 +41,8 @@ for(j in 1:nrow(cytof_files_fcs)){
 # Arch sinh transform
 markers <- str_replace(panel$antigen, "-", "_")
 
-asi <- function(x) asinh(x/5)
+cofactor <- 5
+asi <- function(x) asinh(x/cofactor)
 
 cytof_dat_out[markers] <- apply(cytof_dat_out[markers],2, asi)
 
